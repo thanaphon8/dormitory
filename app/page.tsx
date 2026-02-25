@@ -645,7 +645,7 @@ export default function DormitoryManagement() {
                     className="aspect-square rounded-xl border-2 border-dashed border-slate-700 flex flex-col items-center justify-center text-slate-500 hover:border-slate-500 hover:text-slate-300 transition-colors bg-slate-800/30"
                   >
                     <Icons.Plus />
-                    <span className="text-[10px] mt-1 font-bold">เพิ่มห้อง</span>
+                    <span className="text-[10px] mt-1 font-bold">เพิ่มห้องพัก</span>
                   </button>
                 </div>
               </div>
