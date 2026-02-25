@@ -159,6 +159,29 @@ const Icons = {
       <line x1="12" y1="3" x2="12" y2="15"></line>
     </svg>
   ),
+  LogOut: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+  ),
+  User: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+  ),
+  Shield: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    </svg>
+  ),
+  ChevronRight: () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  ),
 };
 
 interface PaymentHistory {
@@ -189,6 +212,105 @@ interface Room {
   history: PaymentHistory[];
 }
 
+// Admin Dashboard Page Component
+function AdminDashboardPage({ onBack }: { onBack: () => void }) {
+  return (
+    <div className="min-h-screen bg-slate-900 text-slate-200">
+      <div className="max-w-4xl mx-auto p-6 lg:p-10">
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 mb-8 px-4 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors group"
+        >
+          <div className="group-hover:-translate-x-1 transition-transform">
+            <Icons.ArrowLeft />
+          </div>
+          <span className="text-sm font-medium">กลับ</span>
+        </button>
+
+        {/* Profile Header */}
+        <div className="bg-slate-800 rounded-2xl border border-slate-700 p-8 mb-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-2xl flex items-center justify-center text-white font-black text-4xl shadow-xl shadow-blue-500/20 flex-shrink-0">
+              A
+            </div>
+            <div className="text-center sm:text-left">
+              <h1 className="text-2xl font-black text-slate-100 mb-1">Admin</h1>
+              <p className="text-slate-400 text-sm mb-3">ผู้ดูแลระบบหอพัก</p>
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                  <Icons.Shield />
+                  Super Admin
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Menu Items */}
+        <div className="space-y-3">
+          {[
+            {
+              icon: 'User',
+              label: 'ข้อมูลส่วนตัว',
+              desc: 'แก้ไขชื่อ อีเมล และรูปโปรไฟล์',
+              color: 'text-blue-400',
+              bg: 'bg-blue-500/10',
+            },
+            {
+              icon: 'Shield',
+              label: 'ความปลอดภัย',
+              desc: 'เปลี่ยนรหัสผ่าน และการยืนยันตัวตน',
+              color: 'text-emerald-400',
+              bg: 'bg-emerald-500/10',
+            },
+            {
+              icon: 'Bell',
+              label: 'การแจ้งเตือน',
+              desc: 'ตั้งค่าการรับแจ้งเตือนต่างๆ',
+              color: 'text-amber-400',
+              bg: 'bg-amber-500/10',
+            },
+            {
+              icon: 'Settings',
+              label: 'ตั้งค่าระบบ',
+              desc: 'ปรับแต่งการทำงานของระบบหอพัก',
+              color: 'text-purple-400',
+              bg: 'bg-purple-500/10',
+            },
+          ].map((item) => {
+            const IconComp = Icons[item.icon as keyof typeof Icons];
+            return (
+              <button
+                key={item.label}
+                className="w-full flex items-center justify-between gap-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl p-5 transition-colors group text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`w-11 h-11 ${item.bg} rounded-xl flex items-center justify-center ${item.color} flex-shrink-0`}>
+                    {IconComp && <IconComp />}
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-100 text-sm">{item.label}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+                <div className="text-slate-600 group-hover:text-slate-400 transition-colors">
+                  <Icons.ChevronRight />
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Logout Button */}
+        <button className="w-full mt-6 flex items-center justify-center gap-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-bold py-4 rounded-xl transition-colors">
+          <Icons.LogOut />
+          ออกจากระบบ
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function DormitoryManagement() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -196,6 +318,7 @@ export default function DormitoryManagement() {
   const [showOutstandingOnly, setShowOutstandingOnly] = useState(false);
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   const [paymentRoom, setPaymentRoom] = useState<Room | null>(null);
+  const [showAdminDashboard, setShowAdminDashboard] = useState(false);
 
   // Add Room State
   const [isAddRoomModalOpen, setIsAddRoomModalOpen] = useState(false);
@@ -261,6 +384,11 @@ export default function DormitoryManagement() {
   // Rates
   const WATER_RATE = 18;
   const ELECTRIC_RATE = 7;
+
+  // If admin dashboard is shown, render it
+  if (showAdminDashboard) {
+    return <AdminDashboardPage onBack={() => setShowAdminDashboard(false)} />;
+  }
 
   const handleAddRoom = () => {
     if (!newRoomData.id) return;
@@ -369,9 +497,7 @@ export default function DormitoryManagement() {
 
   // Dynamic Stats
   const totalIncome = roomData.reduce((acc, r) => {
-    // Basic calculation for demonstration: count payments from history or current paid status
     const historicalIncome = r.history.reduce((hAcc, h) => hAcc + h.amount, 0);
-    // Add current month if paid (History already handles confirmed payments)
     return acc + historicalIncome;
   }, 0);
 
@@ -491,9 +617,14 @@ export default function DormitoryManagement() {
               <Icons.Bell />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
-            <div className="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-white font-semibold">
+            {/* Profile button — navigates to admin dashboard */}
+            <button
+              onClick={() => setShowAdminDashboard(true)}
+              className="w-10 h-10 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center text-white font-semibold transition-colors ring-2 ring-transparent hover:ring-blue-500/50"
+              title="โปรไฟล์ผู้ดูแลระบบ"
+            >
               A
-            </div>
+            </button>
           </div>
         </div>
       </header>
