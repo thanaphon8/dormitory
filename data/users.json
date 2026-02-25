@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Admin User",
+    "email": "admin@email.com",
+    "password": "adminforever"
+  },
+  {
+    "id": 2,
+    "name": "Somchai Jaidee",
+    "email": "somchai@email.com",
+    "password": "12345678"
+  },
+  {
+    "id": 1764131109041,
+    "name": "oatto",
+    "email": "oatto@gmail.com",
+    "phone": "012314114422",
+    "password": "123456"
+  },
+  {
+    "id": 1771922719488,
+    "name": "สมชาย",
+    "email": "save@gmail.com",
+    "phone": "0968688686868",
+    "password": "save123456"
+  },
+  {
+    "id": 1771998802538,
+    "name": "aaa",
+    "email": "save1@gmail.com",
+    "phone": "0258741963",
+    "password": "save123456"
+  }
+]
