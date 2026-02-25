@@ -768,7 +768,7 @@ export default function DormitoryManagement() {
                 <table className="w-full">
                   <thead className="bg-slate-900/50">
                     <tr className="text-xs uppercase font-black text-slate-500">
-                      <th className="px-6 py-4 text-left">ห้อง</th>
+                      <th className="px-6 py-4 text-left">ห้องพัก</th>
                       <th className="px-6 py-4 text-left">เลขมิเตอร์น้ำ (เก่า/ใหม่)</th>
                       <th className="px-6 py-4 text-left">เลขมิเตอร์ไฟ (เก่า/ใหม่)</th>
                       <th className="px-6 py-4 text-right">ยอดรวมที่ต้องชำระ</th>
