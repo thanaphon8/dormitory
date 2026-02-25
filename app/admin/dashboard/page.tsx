@@ -523,7 +523,6 @@ export default function DormitoryManagement() {
               className="w-10 h-10 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center text-white font-semibold transition-colors ring-2 ring-transparent hover:ring-blue-500/50"
               title="โปรไฟล์ผู้ดูแลระบบ"
             >
-              A
             </button>
           </div>
         </div>
